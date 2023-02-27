@@ -129,14 +129,19 @@ const candlestickLayout: StageHandler = {
             function addBodyEnd(ends: number[][], point: number[], start: number) {
                 const point1 = point.slice();
                 const point2 = point.slice();
-
+/*
                 point1[cDimIdx] = subPixelOptimize(
                     point1[cDimIdx] + candleWidth / 2, 1, false
                 );
                 point2[cDimIdx] = subPixelOptimize(
                     point2[cDimIdx] - candleWidth / 2, 1, true
                 );
-
+*/
+                point1[cDimIdx] = subPixelOptimize(
+                    point1[cDimIdx], 1, false) + candleWidth / 2 ;
+                point2[cDimIdx] = subPixelOptimize(
+                    point2[cDimIdx], 1, true) - candleWidth / 2 ;
+                
                 start
                     ? ends.push(point1, point2)
                     : ends.push(point2, point1);
